@@ -54,7 +54,7 @@ class RwController extends Controller
     public function show($id)
     {
         $rw = Rw::findOrFail($id);
-        return view('admin.Rw.show', compact('Rw'));
+        return view('admin.Rw.show', compact('rw'));
     }
 
     /**
@@ -67,7 +67,7 @@ class RwController extends Controller
     {
         $desa = Desa::all();
         $rw = Rw::findOrFail($id);
-        return view('admin.Rw.edit', compact('desa' ,'Rw'));
+        return view('admin.Rw.edit', compact('desa' ,'rw'));
     }
 
     /**

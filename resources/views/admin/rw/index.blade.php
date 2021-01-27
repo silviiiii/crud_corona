@@ -26,7 +26,7 @@
                             
                             <td>{{$data->nama_rw}}</td>
                             <td>
-                            <form action="{{route('rw.destroy', $data->id)}}" method="post">
+                            <form action="{{route('Rw.destroy', $data->id)}}" method="post">
                             @method('delete')
                             @csrf
                             <a href="{{route('Rw.edit' ,$data->id)}}" class="btn btn-success">Edit</a>

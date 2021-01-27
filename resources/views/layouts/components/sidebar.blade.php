@@ -48,9 +48,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/register.html">
-                <i class="ni ni-circle-08 text-pink"></i>
-                <span class="nav-link-text">Register</span>
+              <a class="nav-link" href="{{route('kasus.index')}}">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">kasus</span>
               </a>
             </li>
             <li class="nav-item">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kasus;
+use App\Models\Rw;
 use Illuminate\Http\Request;
 
 class KasusController extends Controller
@@ -14,7 +15,8 @@ class KasusController extends Controller
      */
     public function index()
     {
-        //
+        $kasus = Kasus::with('Rw')->get();
+        return view('admin.kasus.index' , compact('kasus'));
     }
 
     /**
@@ -24,7 +26,8 @@ class KasusController extends Controller
      */
     public function create()
     {
-        //
+        $rw = Rw::all();
+        return view('admin.kasus.create', compact('rw'));
     }
 
     /**
@@ -35,18 +38,26 @@ class KasusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rw = new Kasus();
+        $kasus->positif = $request->positif;
+        $kasus->id_rw = $request->id_rw;
+        $kasus->meninggal = $request->meninggal;
+        $kasus->sembuh = $request->sembuh;
+        $kasus->tanggal = $request->tanggal;
+        $kasus->save();
+        return redirect()->route('kasus.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kasus  $kasus
+     * @param  \App\Models\Kasus  $rw
      * @return \Illuminate\Http\Response
      */
-    public function show(Kasus $kasus)
+    public function show($id)
     {
-        //
+        $kasus = Kasus::findOrFail($id);
+        return view('admin.kasus.show', compact('kasus'));
     }
 
     /**
@@ -55,31 +66,41 @@ class KasusController extends Controller
      * @param  \App\Models\Kasus  $kasus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kasus $kasus)
+    public function edit($id)
     {
-        //
+        $rw = Rw::all();
+        $kasus = Kasus::findOrFail($id);
+        return view('admin.kasus.edit', compact('kasus' ,'rw'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kasus  $kasus
+     * @param  \App\Models\Kasus  $rw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kasus $kasus)
+    public function update(Request $request, $id)
     {
-        //
+        $kasus= new Kasus();
+        $kasus->positif = $request->positif;
+        $kasus->id_rw = $request->id_rw;
+        $kasus->meninggal = $request->meninggal;
+        $kasus->sembuh = $request->sembuh;
+        $kasus->tanggal = $request->tanggal;
+        $kasus->save();
+        return redirect()->route('kasus.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kasus  $kasus
+     * @param  \App\Models\Kasus  $rw
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kasus $kasus)
+    public function destroy($id)
     {
-        //
+        $kasus = Kasus::findOrFail($id)->delete();
+        return redirect()->route('kasus.index');
     }
 }

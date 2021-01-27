@@ -7,14 +7,14 @@
               Edit Data Rw
             </div>
             <div class="card-body">
-                <form action="{{route('rw.update' ,$rw->id)}}" method="post">
+                <form action="{{route('Rw.update' ,$rw->id)}}" method="post">
                     @method('put')
                     @csrf
                     <div class="form-group">
                     <label for="">Pilih Desa</label>
                     <select name="id_desa" class="form-control" require>
                     @foreach($desa as $data)
-                    <option value="{{$data->id}}">{{$data->nama_desa}}</option>
+                    <option value="{{$data->id}}">{{$data->nama}}</option>
                     @endforeach
                     </select>
                     </div>
