@@ -38,6 +38,16 @@ class DesaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'kode_desa' => 'required|max:11|unique:desas',
+            'nama' => 'required|unique:desas'
+        ], [
+            'kode_desa.required' => 'Kode desa tidak boleh kosong',
+            'kode_desa.max' => 'Kode maximal 11 karakter',
+            'kode_desa.unique' => 'Kode desa sudah terdaftar',
+            'nama.required' => 'Nama desa tidak boleh kosong',
+            'nama.unique' => 'Nama desa sudah terdaftar'
+        ]);
         $desa = new Desa();
         $desa->id_kecamatan = $request->id_kecamatan;
         
@@ -80,6 +90,16 @@ class DesaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'kode_desa' => 'required|max:11|unique:desas',
+            'nama' => 'required|unique:desas'
+        ], [
+            'kode_desa.required' => 'Kode desa tidak boleh kosong',
+            'kode_desa.max' => 'Kode maximal 11 karakter',
+            'kode_desa.unique' => 'Kode desa sudah terdaftar',
+            'nama.required' => 'Nama desa tidak boleh kosong',
+            'nama.unique' => 'Nama desa sudah terdaftar'
+        ]);
         $desa = Desa::findOrFail($id);
         $desa->id_kecamatan = $request->id_kecamatan;
         $desa->kode_desa = $request->kode_desa;

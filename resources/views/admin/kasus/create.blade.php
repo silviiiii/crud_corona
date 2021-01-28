@@ -10,10 +10,20 @@
                     <form action="{{route('kasus.store')}}" method="post">
                         @csrf
                         <div class="form-group">
+                    <label for="">Pilih rw</label>
+                    <select name="id_rw" class="form-control" required>
+                    @foreach($rw as $data)
+                    <option value="{{$data->id}}">{{$data->nama}}</option>
+                    @endforeach
+                    </select>
+                    </div>
+                        <div class="form-group">
                             <label for="">Jumlah Positif</label>
                             <input type="number" name="positif" class="form-control" required>
                         </div>
-                        
+                        <div class="form-group">
+                            
+                        </div>
                          <div class="form-group">
                             <label for="">Jumlah Meninggal</label>
                             <input type="number" name="meninggal" class="form-control" required>

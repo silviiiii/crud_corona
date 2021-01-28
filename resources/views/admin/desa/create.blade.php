@@ -19,12 +19,15 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="">Nama Desa</label>
-                        <input type="text" name="nama" class="form-control" require>
+                    <label for="">Nama Desa</label>
+                                <input type="text" name="nama" class="form-control" id="exampleInputPassword1" placeholder="Nama Kelurahan">
+                                @if($errors->has('nama'))
+                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                @endif
                     </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                     </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                 </form>
             </div>
         </div>

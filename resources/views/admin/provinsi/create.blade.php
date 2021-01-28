@@ -1,23 +1,34 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header"> 
-                    Tambah Data Provinsi
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                @endif
+                <div class="card">
+                    <div class="card-header">
+                        <p>Tambah Data Provinsi</p>
+                    </div>
                 <div class="card-body">
                     <form action="{{route('provinsi.store')}}" method= "post">
                         @csrf
                     
                     <div class="form-group">
-                      <label for="">Kode provinsi</label> 
-                      <input type="text" name="kode_provinsi" class="fprm-control" required>
+                    <label for="">Kode Provinsi</label>
+                                <input type="text"name="kode_provinsi" class="form-control" id="exampleInputEmail1"  placeholder="Kode Provinsi">
+                                @if($errors->has('kode_provinsi'))
+                                    <span class="text-danger">{{ $errors->first('kode_provinsi') }}</span>
+                                @endif
                     </div>
                     <div class="form-group">
-                      <label for="">nama provinsi</label> 
-                      <input type="text" name="nama_provinsi" class="fprm-control" required>
+                    <label for="">Nama Provinsi</label>
+                                <input type="text" name="nama_provinsi" class="form-control" id="exampleInputPassword1" placeholder="Nama Provinsi">
+                                @if($errors->has('nama_provinsi'))
+                                    <span class="text-danger">{{ $errors->first('nama_provinsi') }}</span>
+                                @endif
                     </div>
                     <div class="form-group"> 
                         <button type="submit" class="btn btn-primary btn-block">Simpan</button>

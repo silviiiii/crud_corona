@@ -38,7 +38,7 @@ class KasusController extends Controller
      */
     public function store(Request $request)
     {
-        $rw = new Kasus();
+        $kasus = new Kasus();
         $kasus->positif = $request->positif;
         $kasus->id_rw = $request->id_rw;
         $kasus->meninggal = $request->meninggal;
